@@ -10,9 +10,9 @@ public class AppTest {
 		App app = new App();
 
 		String actualResponse   = app.sayHello();
-		String expectedResponse = "Hello Maven!!";
+		String expectedResponse = "Hello Maven";
 
-		//assertEquals ( expectedResponse, actualResponse );
+		assertEquals ( expectedResponse, actualResponse );
 	} 
 
 }
