@@ -17,4 +17,21 @@ This exercise will help us understand the below concepts:
 	2. Jenkins Master/slave Mode.
 	3. Docker Jenkins plugin.
 
+ > Jenkins Build docker image project will poll github repo for any code commits. This happens every 2 minutes.
+ > WHenever Jenkins detects a code change, it will trigger "Build docker image" job in the master node. The master node is the machine
+   which jenkins is running.
 
+> Once the Docker image is built, it will trigger build hello job. This job requires a docker image though.
+
+>The build hello job will wait until the container is created.
+
+> Jenkins will request docker engine to create a container with the help of docker configurations that we created in
+ Manage Jenkins>Configure System> New Cloud > Docker configuration. 
+As part of this configuration we assign a config label. The config label is associated with the build hello job.
+
+> Jenkins then makesa docker engine REST API request using the docker plugin request for a docker container with the specifications configured in Jenkins.
+>DOcker Engine creates the container and notifies jenkins master.
+> Jenkins Master node notifies the build java jenkins job once the container is ready.
+
+> THe build hello jenkins job then starts the maven build on the container.
+>Once the build is complete (Pass/ Fail), jenkins will dispose the container automatically.

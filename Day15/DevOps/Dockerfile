@@ -8,6 +8,8 @@ ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64
 ENV M2_HOME /root/apache-maven-3.6.1/
 ENV PATH "$PATH:$JAVA_HOME/bin:$M2_HOME/bin"
 
+RUN git config --global http.sslVerify false 
+
 RUN apt-get update && apt-get install default-jdk git -y
 
 COPY apache-maven-3.6.1-bin.tar.gz /root/apache-maven-3.6.1-bin.tar.gz
