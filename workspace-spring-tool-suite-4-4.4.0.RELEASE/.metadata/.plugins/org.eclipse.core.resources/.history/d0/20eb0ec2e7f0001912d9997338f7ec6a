@@ -1,0 +1,6 @@
+package com.amdocs;
+
+@RestController
+public class BookstoreRestController {
+	
+}

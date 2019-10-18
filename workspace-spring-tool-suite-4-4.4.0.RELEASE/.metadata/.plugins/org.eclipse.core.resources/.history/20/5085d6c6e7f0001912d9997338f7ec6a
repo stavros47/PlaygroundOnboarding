@@ -1,0 +1,6 @@
+package com.amdocs;
+
+@Service
+public class Book {
+
+}

@@ -1,0 +1,28 @@
+package com.amdocs;
+
+import java.util.ArrayList;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+
+@RestController
+public class BookstoreRestController {
+	
+	private ArrayList<Book> listOfBooks;
+	
+	public BookstoreRestController() {
+		listOfBooks = new ArrayList<Book>();
+	}
+	
+	@HystrixCommand(fallbackMethod="getLocalCatalogue")
+	@GetMapping("/bookstore")
+	public ArrayList<Book> getBookCatalogue(){
+		
+	}
+	
+	public ArrayList<Book> getLocalCatalogue(){
+		return listOfBooks;
+	}
+}

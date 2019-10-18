@@ -1,0 +1,23 @@
+package com.amdocs;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class BookstoreRestController {
+	
+	private ArrayList<Book> listOfBooks;
+	
+	public BookstoreRestController() {
+		listOfBooks = new ArrayList<Book>();
+	}
+	
+	@HystrixCommand(fallbackMethod="getLocalCatalogue")
+	@GetMapping("/bookstore")
+	public ArrayList<Book> getBookCatalogue(){
+		
+	}
+	
+	public ArrayList<Book> getLocalCatalogue(){
+		return listOfBooks;
+	}
+}
